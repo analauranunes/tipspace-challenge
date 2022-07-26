@@ -1,7 +1,12 @@
 import DataBaseProvider from "./database";
+import PokemonsProvider from "./pokemons";
 
 function Providers({ children }) {
-  return <DataBaseProvider>{children}</DataBaseProvider>;
+  return (
+    <DataBaseProvider>
+      <PokemonsProvider>{children}</PokemonsProvider>
+    </DataBaseProvider>
+  );
 }
 
 export default Providers;
