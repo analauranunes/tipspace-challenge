@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { createContext, useContext, useState } from "react";
 import { DataBaseContext } from "../database";
-import { toast } from "react-toastify/";
+import { toast } from "react-toastify";
 
 export const CommentsContext = createContext();
 

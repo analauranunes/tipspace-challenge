@@ -1,10 +1,13 @@
+import CommentsProvider from "./comments";
 import DataBaseProvider from "./database";
 import PokemonsProvider from "./pokemons";
 
 function Providers({ children }) {
   return (
     <DataBaseProvider>
-      <PokemonsProvider>{children}</PokemonsProvider>
+      <PokemonsProvider>
+        <CommentsProvider>{children}</CommentsProvider>
+      </PokemonsProvider>
     </DataBaseProvider>
   );
 }
