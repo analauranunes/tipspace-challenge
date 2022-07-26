@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios"
-const PokemonsContext = createContext();
+
+export const PokemonsContext = createContext();
 
 function PokemonsProvider({ children }) {
   const [pokemons, setPokemons] = useState();

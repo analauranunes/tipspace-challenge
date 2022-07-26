@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-const DataBaseContext = createContext();
+export const DataBaseContext = createContext();
 
 function DataBaseProvider({ children }) {
   const firebaseConfig = {
@@ -20,8 +20,6 @@ function DataBaseProvider({ children }) {
   const app = initializeApp(firebaseConfig);
 
   const db = getFirestore(app);
-
-  console.log(db);
 
   return (
     <DataBaseContext.Provider value={db}>
