@@ -1,53 +1,47 @@
 import {
+  arrayUnion,
   collection,
   doc,
   getDoc,
-  getDocs,
-  query,
   setDoc,
-  where,
 } from "firebase/firestore";
-import { createContext, useContext, useState } from "react";
-import { DataBaseContext } from "../database";
+import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 
 export const CommentsContext = createContext();
 
 function CommentsProvider({ children }) {
-  const { db } = useContext(DataBaseContext);
-
   const [pokeComments, setPokeComments] = useState();
 
-  async function newComment(pokeName, name, email, comment) {
-    const pokeCollection = doc(db, "comments", email);
-    const pokeDoc = await getDoc(pokeCollection);
-
-    if (pokeDoc.exists()) {
-      toast.error("E-mail já utilizado para comentar anteriormente!");
+  async function newComment(pokeName, name, email, comment, db) {
+    if(!pokeName || !name || !email || !comment || db){
+      toast.error("Algo deu errado, tente novamente!")
     }
 
-    await setDoc(doc(collection(db, "comments"), email), {
-      name: name,
-      email: email,
-      comment: comment,
-      pokename: pokeName,
-    });
+    const pokeCollection = doc(collection(db, "pokemons"), pokeName);
+
+    await setDoc(
+      pokeCollection,
+      {
+        comments: arrayUnion({
+          name: name,
+          email: email,
+          comment: comment,
+          pokename: pokeName,
+        }),
+      },
+      { merge: true }
+    );
 
     toast.success("Comentário adicionado com sucesso!");
   }
 
-  async function allPokeComments(pokeName) {
-    const pokeCollection = collection(db, "comments");
-    const selectAllComments = query(
-      pokeCollection,
-      where("pokename", "==", pokeName)
-    );
-    const allComments = await getDocs(selectAllComments);
+  async function allPokeComments(pokeName, db) {
+    const pokeDoc = doc(db, "pokemons", pokeName);
+    const allComments = await getDoc(pokeDoc);
 
-    if (allComments) {
-      allComments.forEach((comment) => {
-        setPokeComments([...pokeComments, comment]);
-      });
+    if (allComments.exists()) {
+      setPokeComments(allComments.data().comments);
     }
   }
 
