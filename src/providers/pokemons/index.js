@@ -37,16 +37,15 @@ function PokemonsProvider({ children }) {
 
   function pokemonInfo(pokemon) {
     const baseUrl = "https://pokeapi.co/api/v2";
-    let pokeGatherInfo = {};
     axios
       .get(`${baseUrl}/pokemon/${pokemon}`)
       .then((res) => {
-        pokeGatherInfo = {
+        setPokeInfo({
           name: res.data.name,
           img: res.data.sprites.front_default,
           attack: res.data.stats[1].base_stat,
           defense: res.data.stats[2].base_stat,
-        };
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -55,14 +54,15 @@ function PokemonsProvider({ children }) {
     axios
       .get(`${baseUrl}/pokemon-species/${pokemon}`)
       .then((res) => {
-        pokeGatherInfo.description =
-          res.data.flavor_text_entries[
-            Math.floor(Math.random() * 20)
-          ].flavor_text;
+        setPokeInfo({
+          ...pokeInfo,
+          description:
+            res.data.flavor_text_entries[
+              Math.floor(Math.random() * 20)
+            ].flavor_text,
+        });
       })
       .catch((err) => console.log(err));
-
-    setPokeInfo(pokeGatherInfo);
   }
 
   return (
