@@ -22,7 +22,7 @@ function DataBaseProvider({ children }) {
   const db = getFirestore(app);
 
   return (
-    <DataBaseContext.Provider value={db}>
+    <DataBaseContext.Provider value={{db}}>
       {children}
     </DataBaseContext.Provider>
   );
