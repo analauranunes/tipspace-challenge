@@ -10,6 +10,7 @@ function PokemonsProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(
     "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
   );
+  let reqPokeInfo = {};
   const [pokeInfo, setPokeInfo] = useState();
 
   useEffect(() => {
@@ -40,12 +41,12 @@ function PokemonsProvider({ children }) {
     axios
       .get(`${baseUrl}/pokemon/${pokemon}`)
       .then((res) => {
-        setPokeInfo({
+        reqPokeInfo = {
           name: res.data.name,
           img: res.data.sprites.front_default,
           attack: res.data.stats[1].base_stat,
           defense: res.data.stats[2].base_stat,
-        });
+        };
       })
       .catch((err) => {
         console.log(err);
@@ -54,13 +55,12 @@ function PokemonsProvider({ children }) {
     axios
       .get(`${baseUrl}/pokemon-species/${pokemon}`)
       .then((res) => {
-        setPokeInfo({
-          ...pokeInfo,
-          description:
-            res.data.flavor_text_entries[
-              Math.floor(Math.random() * 20)
-            ].flavor_text,
-        });
+        reqPokeInfo.description =
+          res.data.flavor_text_entries[
+            Math.floor(Math.random() * 20)
+          ].flavor_text;
+
+        setPokeInfo(reqPokeInfo);
       })
       .catch((err) => console.log(err));
   }
