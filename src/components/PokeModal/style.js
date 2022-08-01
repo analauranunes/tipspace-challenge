@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import pokemonCard from "../../assets/card-pokemon-modal.jpg"
 
 export const ContainerModal = styled.div`
   width: 100%;
@@ -15,7 +16,7 @@ export const ContainerModal = styled.div`
 `;
 
 export const ContainerBackground = styled.div`
-  background-image: url("https://c4.wallpaperflare.com/wallpaper/230/550/459/pokemon-poke-ball-hd-wallpaper-thumb.jpg");
+  background-image: url(${pokemonCard});
   background-size: cover;
   background-position: bottom;
   width: 90%;
@@ -24,7 +25,7 @@ export const ContainerBackground = styled.div`
   height: 530px;
   border-radius: 5px;
 
-  @media (min-width: 870px) {
+  @media (min-width: 900px) {
     display: flex;
   }
 `;
@@ -34,6 +35,7 @@ export const ContainerPokeInfo = styled.div`
   flex-direction: column;
   background-color: whitesmoke;
   border-radius: 5px;
+  height: 305px;
 
   button {
     display: flex;
@@ -81,19 +83,19 @@ export const ContainerPokeInfo = styled.div`
 
   p {
     text-transform: lowercase;
-    max-width: 90%;
+    max-width: 97%;
     text-align: center;
     padding-bottom: 5px;
   }
 
-  @media (min-width: 870px) {
+  @media (min-width: 900px) {
     background-color: transparent;
     align-items: flex-start;
     max-width: 190px;
     padding-left: 5px;
 
     > div {
-        font-size: 14px;
+      font-size: 14px;
     }
 
     button {
@@ -125,7 +127,7 @@ export const ContainerNoComments = styled.div`
     width: 150px;
   }
 
-  @media(min-width: 870px){
+  @media (min-width: 870px) {
     align-self: center;
   }
 `;
@@ -134,7 +136,7 @@ export const ContainerInputs = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 15px;
   gap: 5px;
 
@@ -163,7 +165,7 @@ export const ContainerInputs = styled.div`
     }
   }
 
-  @media (min-width: 870px) {
+  @media (min-width: 900px) {
     flex-wrap: nowrap;
 
     input,
@@ -176,11 +178,12 @@ export const ContainerInputs = styled.div`
 export const ContainerComments = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
-  overflow-y: scroll;
+  flex-direction: column-reverse;
+  overflow-x: hidden;
   padding-top: 5px;
-  height: 160px;
+  max-height: 150px;
   gap: 10px;
+  padding-right: 5px;
 
   div {
     display: flex;
@@ -193,17 +196,20 @@ export const ContainerComments = styled.div`
 
     span {
       font-weight: 700;
+      text-transform: lowercase;
     }
 
     p {
       max-width: 190px;
       word-wrap: break-word;
       text-align: center;
+      text-transform: lowercase;
     }
   }
 
-  @media (min-width: 870px) {
+  @media (min-width: 900px) {
     height: 450px;
+    max-height: 450px;
 
     div {
       width: 300px;
@@ -220,5 +226,9 @@ export const ContainerDivisorCommInputs = styled.div`
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  padding-left: 90px;
+  padding-right: 5px;
+
+  @media (min-width: 870px) {
+    padding-left: 90px;
+  }
 `;
