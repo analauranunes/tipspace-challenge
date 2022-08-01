@@ -4,6 +4,7 @@ import { DataBaseContext } from "../../providers/database";
 import { PokemonsContext } from "../../providers/pokemons";
 import * as styled from "./style";
 import { toast } from "react-toastify";
+import cuboneNoComment from "../../assets/pokemon-cubone-modal.gif"
 
 function PokeModal({ setModalIsOpen, name }) {
   const { pokemonInfo, pokeInfo } = useContext(PokemonsContext);
@@ -38,7 +39,7 @@ function PokeModal({ setModalIsOpen, name }) {
   return (
     <>
       {pokeInfo && (
-        <styled.ContainerModal>
+        <styled.ContainerModal data-testid="modal-test">
           <styled.ContainerBackground>
             <styled.ContainerPokeInfo>
               <button
@@ -76,21 +77,13 @@ function PokeModal({ setModalIsOpen, name }) {
               ) : (
                 <styled.ContainerNoComments>
                   <img
-                    src="https://c.tenor.com/B-I9jCO00-4AAAAj/pokemon-cubone.gif"
+                    src={cuboneNoComment}
                     alt="cubone"
                   />
                   <span>No comments yet!</span>
                 </styled.ContainerNoComments>
               )}
               <styled.ContainerInputs>
-                <input
-                  type="text"
-                  placeholder="make a comment!"
-                  required
-                  minLength={10}
-                  maxLength={65}
-                  onChange={(event) => setComment(event.target.value)}
-                />
                 <input
                   type="text"
                   placeholder="type your name"
@@ -106,6 +99,14 @@ function PokeModal({ setModalIsOpen, name }) {
                   required
                   onChange={(event) => setEmail(event.target.value)}
                 />
+                  <input
+                    type="text"
+                    placeholder="make a comment!"
+                    required
+                    minLength={10}
+                    maxLength={65}
+                    onChange={(event) => setComment(event.target.value)}
+                  />
                 <button
                   onClick={() =>
                     handleClick(name, userName, email, comment, db)
