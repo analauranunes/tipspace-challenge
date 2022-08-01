@@ -69,6 +69,8 @@ function PokemonsProvider({ children }) {
     <PokemonsContext.Provider
       value={{
         pokemons,
+        nextPage,
+        previousPage,
         nextPages,
         previousPages,
         pokemonInfo,
