@@ -36,18 +36,27 @@ export const ContainerButtons = styled.div`
     background-color: green;
     color: white;
     transition: 1s;
+  }
 
+  .active-button{
     :hover {
       background-color: lightseagreen;
       transition: 1s;
     }
+  }
+
+  .inactive-button {
+    background-color: lightgreen;
+    
+      cursor: not-allowed;
+    
   }
 `;
 
 export const ContainerCards = styled.div`
   display: flex;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: hidden;
 
   @media (min-width: 768px) {
     flex-wrap: wrap;

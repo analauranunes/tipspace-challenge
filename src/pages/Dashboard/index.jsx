@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { PokemonsContext } from "../../providers/pokemons";
-import PokeCard from "../PokeCard";
+import PokeCard from "../../components/PokeCard";
 import * as styled from "./styles";
 
-function PokeList() {
-  const { pokemons, previousPages, nextPages } =
+function Dashboard() {
+  const { pokemons, previousPages, nextPages, previousPage, nextPage } =
     useContext(PokemonsContext);
 
   return (
@@ -14,8 +14,8 @@ function PokeList() {
         curiosities!
       </h1>
       <styled.ContainerButtons>
-        <button onClick={() => previousPages()}>previous</button>
-        <button onClick={() => nextPages()}>next</button>
+        <button className={!previousPage ? "inactive-button" : "active-button"} onClick={() => previousPages()}>previous</button>
+        <button className={!nextPage ? "inactive-button" : "active-button"} onClick={() => nextPages()}>next</button>
       </styled.ContainerButtons>
       <styled.ContainerCards>
         {pokemons &&
@@ -27,4 +27,4 @@ function PokeList() {
   );
 }
 
-export default PokeList;
+export default Dashboard;
