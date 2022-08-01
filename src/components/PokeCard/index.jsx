@@ -3,12 +3,12 @@ import PokeBall from "../PokeBall";
 import PokeModal from "../PokeModal";
 import * as styled from "./styles";
 
-function PokeCard({ name, onClick }) {
+function PokeCard({ name }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <>
-      <styled.ContainerCard onClick={onClick}>
+      <styled.ContainerCard>
         <PokeBall size="115px" setModalIsOpen={setModalIsOpen} />
         <h2>{name}</h2>
       </styled.ContainerCard>
