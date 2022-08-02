@@ -83,7 +83,7 @@ const PokeModal = ({ setModalIsOpen, name }) => {
               ) : (
                 <styled.ContainerNoComments>
                   <img src={cuboneNoComment} alt="cubone" />
-                  <span>No comments yet!</span>
+                  <span>no comments yet!</span>
                 </styled.ContainerNoComments>
               )}
               <styled.ContainerInputs>
