@@ -1,6 +1,6 @@
 describe("next page", () => {
   it("goes to the next page of pokemons", () => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://pokedex-three-woad.vercel.app/");
     cy.viewport(1440, 900);
     cy.get(".inactive-button");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
