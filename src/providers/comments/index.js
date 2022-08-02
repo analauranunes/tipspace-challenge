@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 export const CommentsContext = createContext();
 
 const CommentsProvider = ({ children }) => {
-  const [pokeComments, setPokeComments] = useState([]);
+  const [pokeComments, setPokeComments] = useState(undefined);
 
   const newComment = async (pokeName, name, email, comment, db) => {
     const pokeCollection = doc(collection(db, "pokemons"), pokeName);
@@ -30,7 +30,7 @@ const CommentsProvider = ({ children }) => {
     toast.success("comment added with success⭐");
   }
 
-  const allPokeComments = async (pokeName, db) => {
+  const allPokeComments = (pokeName, db) => {
     onSnapshot(doc(db, "pokemons", pokeName), (doc) => {
       if (doc.data()) {
         setPokeComments(doc.data().comments);
