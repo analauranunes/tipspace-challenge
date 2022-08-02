@@ -4,7 +4,7 @@ import { DataBaseContext } from "../../providers/database";
 import { PokemonsContext } from "../../providers/pokemons";
 import * as styled from "./style";
 import { toast } from "react-toastify";
-import cuboneNoComment from "../../assets/pokemon-cubone-modal.gif"
+import cuboneNoComment from "../../assets/pokemon-cubone-modal.gif";
 
 function PokeModal({ setModalIsOpen, name }) {
   const { pokemonInfo, pokeInfo } = useContext(PokemonsContext);
@@ -26,13 +26,18 @@ function PokeModal({ setModalIsOpen, name }) {
   }, []);
 
   function handleClick(name, userName, email, comment, db) {
+    setUserName("");
+    setEmail("");
+    setComment("");
+
     if (!userName || !name || !email || !comment) {
-      return toast.error("invalid fields, try again!");
+      return toast.error("invalid fields, try again ❌");
     }
 
     if (!email.includes("@") || !email.includes(".com")) {
-      return toast.error("invalid email, try again!");
+      return toast.error("invalid email, try again ❌");
     }
+
     newComment(name, userName, email, comment, db);
   }
 
@@ -43,6 +48,7 @@ function PokeModal({ setModalIsOpen, name }) {
           <styled.ContainerBackground>
             <styled.ContainerPokeInfo>
               <button
+              id="close-button"
                 onClick={() => {
                   clearPokeComments();
                   setModalIsOpen(false);
@@ -76,16 +82,15 @@ function PokeModal({ setModalIsOpen, name }) {
                 </styled.ContainerComments>
               ) : (
                 <styled.ContainerNoComments>
-                  <img
-                    src={cuboneNoComment}
-                    alt="cubone"
-                  />
+                  <img src={cuboneNoComment} alt="cubone" />
                   <span>No comments yet!</span>
                 </styled.ContainerNoComments>
               )}
               <styled.ContainerInputs>
                 <input
+                  value={userName}
                   type="text"
+                  name="name"
                   placeholder="type your name"
                   required
                   minLength={3}
@@ -94,19 +99,23 @@ function PokeModal({ setModalIsOpen, name }) {
                   }
                 />
                 <input
+                  value={email}
                   type="email"
+                  name="email"
                   placeholder="type your email"
                   required
                   onChange={(event) => setEmail(event.target.value)}
                 />
-                  <input
-                    type="text"
-                    placeholder="make a comment!"
-                    required
-                    minLength={10}
-                    maxLength={65}
-                    onChange={(event) => setComment(event.target.value)}
-                  />
+                <input
+                  value={comment}
+                  type="text"
+                  name="comment"
+                  placeholder="make a comment!"
+                  required
+                  minLength={10}
+                  maxLength={65}
+                  onChange={(event) => setComment(event.target.value)}
+                />
                 <button
                   onClick={() =>
                     handleClick(name, userName, email, comment, db)
