@@ -8,7 +8,7 @@ function PokeCard({ name }) {
 
   return (
     <>
-      <styled.ContainerCard>
+      <styled.ContainerCard id={name}>
         <PokeBall size="115px" setModalIsOpen={setModalIsOpen} />
         <h2>{name}</h2>
       </styled.ContainerCard>
