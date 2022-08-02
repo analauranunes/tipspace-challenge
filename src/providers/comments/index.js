@@ -27,7 +27,7 @@ function CommentsProvider({ children }) {
       },
       { merge: true }
     );
-    toast.success("comment added with success!");
+    toast.success("comment added with success⭐");
   }
 
   async function allPokeComments(pokeName, db) {
