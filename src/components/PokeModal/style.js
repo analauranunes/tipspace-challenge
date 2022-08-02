@@ -24,6 +24,16 @@ export const ContainerBackground = styled.div`
   max-width: 827px;
   height: 530px;
   border-radius: 5px;
+  animation: 1s ease-out 0s 1 slideInFromTop;
+
+  @keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 
   @media (min-width: 900px) {
     display: flex;
@@ -178,12 +188,26 @@ export const ContainerInputs = styled.div`
 export const ContainerComments = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column-reverse;
+  flex-direction: column;
   overflow-x: hidden;
   padding-top: 5px;
   max-height: 150px;
   gap: 10px;
   padding-right: 5px;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px darkorange;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: darkorange;
+    border-radius: 10px;
+  }
 
   div {
     display: flex;
