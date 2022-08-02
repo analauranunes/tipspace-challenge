@@ -6,7 +6,7 @@ import * as styled from "./style";
 import { toast } from "react-toastify";
 import cuboneNoComment from "../../assets/pokemon-cubone-modal.gif";
 
-function PokeModal({ setModalIsOpen, name }) {
+const PokeModal = ({ setModalIsOpen, name }) => {
   const { pokemonInfo, pokeInfo } = useContext(PokemonsContext);
   const {
     newComment,
@@ -25,7 +25,7 @@ function PokeModal({ setModalIsOpen, name }) {
     allPokeComments(name, db);
   }, []);
 
-  function handleClick(name, userName, email, comment, db) {
+  const handleClick = (name, userName, email, comment, db) => {
     setUserName("");
     setEmail("");
     setComment("");

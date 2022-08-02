@@ -1,6 +1,6 @@
 import * as styled from "./styles";
 
-function PokeBall({ size, setModalIsOpen }) {
+const PokeBall = ({ size, setModalIsOpen }) => {
   return (
     <styled.Container
       size={size}

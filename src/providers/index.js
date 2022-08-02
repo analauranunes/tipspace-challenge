@@ -2,7 +2,7 @@ import CommentsProvider from "./comments";
 import DataBaseProvider from "./database";
 import PokemonsProvider from "./pokemons";
 
-function Providers({ children }) {
+const Providers = ({ children }) => {
   return (
     <DataBaseProvider>
       <PokemonsProvider>

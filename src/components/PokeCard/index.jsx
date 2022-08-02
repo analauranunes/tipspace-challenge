@@ -3,7 +3,7 @@ import PokeBall from "../PokeBall";
 import PokeModal from "../PokeModal";
 import * as styled from "./styles";
 
-function PokeCard({ name }) {
+const PokeCard = ({ name }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (

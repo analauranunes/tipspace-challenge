@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const PokemonsContext = createContext();
 
-function PokemonsProvider({ children }) {
+const PokemonsProvider = ({ children }) => {
   const [pokemons, setPokemons] = useState();
   const [previousPage, setPreviousPage] = useState(null);
   const [nextPage, setNextPage] = useState(null);
@@ -24,19 +24,19 @@ function PokemonsProvider({ children }) {
       .catch((err) => console.log(err));
   }, [currentPage]);
 
-  function nextPages() {
+  const nextPages = () => {
     if (nextPage) {
       setCurrentPage(nextPage);
     }
   }
 
-  function previousPages() {
+  const previousPages = () => {
     if (previousPage) {
       setCurrentPage(previousPage);
     }
   }
 
-  function pokemonInfo(pokemon) {
+  const pokemonInfo = (pokemon) => {
     const baseUrl = "https://pokeapi.co/api/v2";
     axios
       .get(`${baseUrl}/pokemon/${pokemon}`)

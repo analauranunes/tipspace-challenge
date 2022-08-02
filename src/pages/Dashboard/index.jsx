@@ -3,7 +3,7 @@ import { PokemonsContext } from "../../providers/pokemons";
 import PokeCard from "../../components/PokeCard";
 import * as styled from "./styles";
 
-function Dashboard() {
+const Dashboard = () => {
   const { pokemons, previousPages, nextPages, previousPage, nextPage } =
     useContext(PokemonsContext);
 

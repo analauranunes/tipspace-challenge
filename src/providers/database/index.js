@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 
 export const DataBaseContext = createContext();
 
-function DataBaseProvider({ children }) {
+const DataBaseProvider = ({ children }) => {
   const firebaseConfig = {
     apiKey: "AIzaSyDcL4TNiC2lfbAyORsUt-PGxSapEMExA-s",
     authDomain: "pokemon-comments.firebaseapp.com",

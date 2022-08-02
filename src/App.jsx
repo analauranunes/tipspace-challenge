@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/Dashboard";
 import { GlobalStyle } from "./styles/globalStyle";
 
-function App() {
+const App = () => {
   return (
     <>
       <ToastContainer />
