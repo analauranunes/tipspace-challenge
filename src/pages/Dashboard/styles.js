@@ -13,7 +13,6 @@ export const ContainerList = styled.div`
   }
 
   @media (min-width: 768px) {
-
     h1 {
       font-size: 55px;
     }
@@ -38,7 +37,7 @@ export const ContainerButtons = styled.div`
     transition: 1s;
   }
 
-  .active-button{
+  .active-button {
     :hover {
       background-color: lightseagreen;
       transition: 1s;
@@ -47,9 +46,8 @@ export const ContainerButtons = styled.div`
 
   .inactive-button {
     background-color: lightgreen;
-    
-      cursor: not-allowed;
-    
+
+    cursor: not-allowed;
   }
 `;
 
@@ -57,6 +55,21 @@ export const ContainerCards = styled.div`
   display: flex;
   align-items: center;
   overflow-y: hidden;
+  padding-bottom: 5px;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: darkred;
+    border-radius: 10px;
+  }
 
   @media (min-width: 768px) {
     flex-wrap: wrap;
