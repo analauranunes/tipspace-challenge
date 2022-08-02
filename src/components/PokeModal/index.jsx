@@ -23,7 +23,7 @@ const PokeModal = ({ setModalIsOpen, name }) => {
   useEffect(() => {
     pokemonInfo(name);
     allPokeComments(name, db);
-  }, []);
+  }, [name]);
 
   const handleClick = (name, userName, email, comment, db) => {
     setUserName("");
