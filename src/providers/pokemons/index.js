@@ -36,9 +36,9 @@ const PokemonsProvider = ({ children }) => {
     }
   }
 
-  const pokemonInfo = (pokemon) => {
+  const pokemonInfo = async (pokemon) => {
     const baseUrl = "https://pokeapi.co/api/v2";
-    axios
+    await axios
       .get(`${baseUrl}/pokemon/${pokemon}`)
       .then((res) => {
         reqPokeInfo = {
@@ -52,7 +52,7 @@ const PokemonsProvider = ({ children }) => {
         console.log(err);
       });
 
-    axios
+    await axios
       .get(`${baseUrl}/pokemon-species/${pokemon}`)
       .then((res) => {
         reqPokeInfo.description =
